@@ -1,0 +1,157 @@
+@import 'simple-keyboard/build/css/index.css';
+
+.keyboard-container {
+  width: 100%;
+  height: auto;
+}
+
+.simple-keyboard.tui-theme .keyboard-button {
+  font-size: 30px !important;
+}
+
+/* Скрываем текст для специальных кнопок и показываем иконки */
+.simple-keyboard.tui-theme .hg-button[data-skbtn="{bksp}"] {
+  font-size: 0 !important;
+}
+
+.simple-keyboard.tui-theme .hg-button[data-skbtn="{arrowup}"] {
+  font-size: 0 !important;
+}
+
+.simple-keyboard.tui-theme .hg-button[data-skbtn="{arrowdown}"] {
+  font-size: 0 !important;
+}
+
+.simple-keyboard.tui-theme .hg-button[data-skbtn="{enter}"] {
+  font-size: 0 !important;
+}
+.simple-keyboard.tui-theme {
+  --max-btn-width: 77px;
+  --min-btn-width: 77px;
+  background-color: var(--tui-background-elevation-1);
+}
+
+.simple-keyboard.tui-theme .hg-row {
+  justify-content: center;
+  align-items: center;
+}
+
+.simple-keyboard.tui-theme
+  .hg-row:has(button[data-skbtn='.'], button[data-skbtn='{enter}']):not(:has(button[data-skbtn='{numbers}'], button[data-skbtn='{abc}'])) {
+  justify-content: space-between;
+}
+
+.simple-keyboard.tui-theme
+  .hg-row:has(button[data-skbtn='.'], button[data-skbtn='0'], button[data-skbtn='{enter}']):not(
+    :has(button[data-skbtn='{numbers}'], button[data-skbtn='{abc}'])
+  )
+  button[data-skbtn='{enter}'] {
+  --max-btn-width: 80px;
+}
+
+.simple-keyboard.tui-theme .hg-button {
+  background: none;
+  color: var(--tui-text-secondary);
+  box-shadow: inset 0 0 0 1px var(--t-bs);
+  height: 75px;
+  width: 75px;
+  padding: var(--tui-padding-l);
+  border-radius: var(--tui-radius-l);
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.simple-keyboard.tui-theme .hg-functionBtn:not(.hg-button-space, .hg-button-numbers, .hg-button-lang, .hg-button-enter) {
+  max-width: calc(var(--max-btn-width) * 1.5);
+}
+
+.simple-keyboard.tui-theme .hg-button-lang,
+.simple-keyboard.tui-theme .hg-button-numbers {
+  max-width: calc(var(--max-btn-width));
+}
+
+.simple-keyboard.tui-theme .hg-button-space {
+  max-width: calc(var(--max-btn-width) * 4.75);
+}
+
+.simple-keyboard.tui-theme .hg-button-enter {
+  max-width: calc(var(--max-btn-width) * 1.5);
+}
+
+.simple-keyboard.tui-theme .hg-standardBtn {
+  max-width: var(--max-btn-width);
+}
+
+.hg-theme-default {
+  padding: 0;
+}
+
+.hg-theme-default.tui-theme .hg-button.hg-standardBtn[data-skbtn='@'] {
+  max-width: var(--max-btn-width);
+}
+
+.simple-keyboard.tui-theme.hg-layout-digital .hg-rows {
+  min-width: 280px;
+}
+.simple-keyboard.tui-theme.hg-layout-digital .hg-row {
+  position: relative;
+  justify-content: start;
+  align-items: left;
+}
+
+.simple-keyboard.tui-theme.hg-layout-digital .hg-button {
+  max-width: var(--max-btn-width);
+}
+
+/* Кнопки "0" и "." остаются стандартного размера */
+.simple-keyboard.tui-theme.hg-layout-digital [data-skbtn='0'] {
+  max-width: var(--max-btn-width) !important;
+  width: var(--max-btn-width) !important;
+}
+
+.simple-keyboard.tui-theme.hg-layout-digital [data-skbtn='.'] {
+  max-width: var(--max-btn-width) !important;
+  width: var(--max-btn-width) !important;
+}
+
+/* Увеличиваем ширину кнопки Enter - в ширину двух кнопок */
+.simple-keyboard.tui-theme.hg-layout-digital [data-skbtn='{enter}'] {
+  max-width: calc(var(--max-btn-width) * 2) !important;
+  width: calc(var(--max-btn-width) * 2) !important;
+}
+
+.simple-keyboard.tui-theme.hg-layout-digital .hg-button-enter {
+  max-width: calc(var(--max-btn-width) * 2) !important;
+  width: calc(var(--max-btn-width) * 2) !important;
+}
+
+[tuiAppearance][data-appearance='whiteblock']:is(a, button, select, textarea, input, label):not(:disabled):active:not(:disabled):not(
+    [data-state]
+  ),
+[tuiAppearance][data-appearance='whiteblock']:is(a, button, select, textarea, input, label):not(:disabled):hover:not(:disabled):not(
+    [data-state]
+  ) {
+  --t-bs: var(--tui-border-normal);
+}
+.simple-keyboard.tui-theme.hg-layout-dot_digital_plus_minus .hg-row {
+  justify-content: flex-start;
+  position: relative;
+}
+
+.simple-keyboard.tui-theme.hg-layout-dot_digital_plus_minus .hg-row > button:not([data-skbtn='{enter}']) {
+  width: 75px !important;
+}
+
+button[data-skbtn='{plus_minus}'].keyboard-plusminus {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: calc(75px * 2 + 5px) !important;
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: 700;
+  z-index: 2;
+}

@@ -1,6 +1,12 @@
+//main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideEventPlugins } from '@taiga-ui/event-plugins';
+import { CleanPage } from './clean-page/clean-page';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(CleanPage, {
+  providers: [
+    provideAnimations(),
+    provideEventPlugins(),
+  ],
+}).catch(err => console.error(err));
