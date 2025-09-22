@@ -8,147 +8,145 @@
 
     <div class="left-screen">
 
-      <div class="temperature">
+      <form class="incrementForm" [formGroup]="incrementForm">
+        <div class="temperature" formGroupName="temperature">
 
-        <span class="tui-text_h5">По температуре</span>
+          <span class="tui-text_h5">По температуре</span>
 
-        <div class="action-field">
-          <tui-textfield class="tueText">
-            <label class="temperatureLabel" tuiLabel>Температура</label>
-            <input
-              class="text-field"
-              tuiInputNumber
-              [(ngModel)]="increment.temperature.value"
-              (click)="activateField('temperature')"
-              readonly
-            />
-          </tui-textfield>
+          <div class="action-field">
+            <tui-textfield class="tueText">
+              <label class="temperatureLabel" tuiLabel>Температура</label>
+              <input
+                class="text-field"
+                tuiInputNumber
+                formControlName="value"
+                (click)="activateField('temperature')"
+                readonly
+              />
+            </tui-textfield>
+          </div>
+
+          <div class="checkBox">
+            <p>
+              <label class="tui-text_body-m-2" tuiLabel>
+                <input
+                  tuiRadio
+                  type="radio"
+                  class="radioInput"
+                  [identityMatcher]="identityMatcher"
+                  [value]="'Восходящий'"
+                  formControlName="trend"
+                />
+                Восходящий
+              </label>
+            </p>
+            <p>
+              <label class="tui-text_body-m-2" tuiLabel>
+                <input
+                  tuiRadio
+                  type="radio"
+                  class="radioInput"
+                  [identityMatcher]="identityMatcher"
+                  [value]="'Нисходящий'"
+                  formControlName="trend"
+                />
+                Нисходящий
+              </label>
+            </p>
+            <p>
+              <label class="tui-text_body-m-2" tuiLabel>
+                <input
+                  tuiRadio
+                  type="radio"
+                  class="radioInput"
+                  [identityMatcher]="identityMatcher"
+                  [value]="'Отключено'"
+                  formControlName="trend"
+                />
+                Отключено
+              </label>
+            </p>
+          </div>
+
         </div>
 
-        <div class="checkBox">
-          <p>
-            <label class="tui-text_body-m-2" tuiLabel>
+        <div class="time" formGroupName="time">
+          <span class="tui-text_h5">По времени</span>
+
+          <div class="action-time">
+
+            <div class="minutes">
+              <tui-textfield class="tueText">
+                <label class="timeLabel" tuiLabel>Минуты</label>
+                <input
+                  class="text-field"
+                  tuiInputNumber
+                  [min]="0"
+                  formControlName="minutes"
+                  (click)="activateField('minutes')"
+                  readonly
+                />
+              </tui-textfield>
+            </div>
+
+            <div class="second">
+              <tui-textfield class="tueText">
+                <label class="timeLabel" tuiLabel>Секунды</label>
+                <input
+                  class="text-field"
+                  tuiInputNumber
+                  [min]="0"
+                  [max]="59"
+                  formControlName="seconds"
+                  (click)="activateField('seconds')"
+                  readonly
+                />
+              </tui-textfield>
+            </div>
+
+          </div>
+
+          <div class="checkBox">
+            <label tuiLabel class="tui-text_body-m-2">
               <input
-                name="Восходящий"
                 tuiRadio
                 type="radio"
                 class="radioInput"
-                [identityMatcher]="identityMatcher"
-                [value]="'up'"
-                [(ngModel)]="increment.temperature.trend"
+                formControlName="trend"
+                [value]="'Восходящий'"
               />
               Восходящий
             </label>
-          </p>
-          <p>
-            <label class="tui-text_body-m-2" tuiLabel>
+
+            <label tuiLabel class="tui-text_body-m-2">
               <input
-                name="Низходящий"
                 tuiRadio
                 type="radio"
                 class="radioInput"
-                [identityMatcher]="identityMatcher"
-                [value]="'down'"
-                [(ngModel)]="increment.temperature.trend"
+                formControlName="trend"
+                [value]="'Нисходящий'"
               />
               Нисходящий
             </label>
-          </p>
-          <p>
-            <label class="tui-text_body-m-2" tuiLabel>
+
+            <label tuiLabel class="tui-text_body-m-2">
               <input
-                name="Отключено"
                 tuiRadio
                 type="radio"
                 class="radioInput"
-                [identityMatcher]="identityMatcher"
-                [value]="'disable'"
-                [(ngModel)]="increment.temperature.trend"
+                formControlName="trend"
+                [value]="'Отключено'"
               />
               Отключено
             </label>
-          </p>
-        </div>
-
-      </div>
-
-      <div class="time">
-        <span class="tui-text_h5">По времени</span>
-
-        <div class="action-time">
-
-          <div class="minutes">
-            <tui-textfield class="tueText">
-              <label class="timeLabel" tuiLabel>Минуты</label>
-              <input
-                class="text-field"
-                tuiInputNumber
-                [min]="0"
-                [(ngModel)]="increment.time.minutes"
-                (click)="activateField('minutes')"
-                readonly
-              />
-            </tui-textfield>
           </div>
-
-          <div class="second">
-            <tui-textfield class="tueText">
-              <label class="timeLabel" tuiLabel>Секунды</label>
-              <input
-                class="text-field"
-                tuiInputNumber
-                [min]="0"
-                [max]="59"
-                (ngModelChange)="onSecondsChange($event)"
-                [(ngModel)]="increment.time.seconds"
-                (click)="activateField('seconds')"
-                readonly
-              />
-            </tui-textfield>
-          </div>
-
         </div>
-
-        <div class="checkBox">
-          <label tuiLabel class="tui-text_body-m-2">
-            <input
-              tuiRadio
-              type="radio"
-              class="radioInput"
-              [(ngModel)]="increment.time.trend"
-              [value]="'up'"
-            />
-            Восходящий
-          </label>
-
-          <label tuiLabel class="tui-text_body-m-2">
-            <input
-              tuiRadio
-              type="radio"
-              class="radioInput"
-              [(ngModel)]="increment.time.trend"
-              [value]="'down'"
-            />
-            Нисходящий
-          </label>
-
-          <label tuiLabel class="tui-text_body-m-2">
-            <input
-              tuiRadio
-              type="radio"
-              class="radioInput"
-              [(ngModel)]="increment.time.trend"
-              [value]="'disable'"
-            />
-            Отключено
-          </label>
-        </div>
-      </div>
+      </form>
 
     </div>
 
     <div class="right-screen">
-      <app-keyboard 
+      <app-keyboard
         [input]="keyboardValue"
         (keyPressed)="onKeyPressed($event)"
         [digital]="true">
@@ -158,8 +156,8 @@
   </div>
 
   <div class="footer">
-    <button size="l" class="tapButtonLeft" tuiButton type="button">Отмена</button>
-    <button size="l" class="tapButtonRight" tuiButton type="button">Принять</button>
+    <button size="l" class="tapButtonLeft" tuiButton  type="button">Отмена</button>
+    <button size="l" class="tapButtonRight" tuiButton (click)="submitData()" type="button">Принять</button>
   </div>
 
 </div>
